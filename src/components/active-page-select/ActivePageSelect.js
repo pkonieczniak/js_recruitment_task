@@ -1,16 +1,31 @@
 import { Element } from '../common';
+import { searchCriteriaChangedEvent } from '../../events';
 
-export const ActivePageSelect = (pages) => {
+export const ActivePageSelect = (pages, currentPage) => {
     const MAX_PAGES = 10; // TODO: Use a generator fn, to handle huge numbers of pages
     const condtion = pages > MAX_PAGES ? MAX_PAGES : pages;
     const children = [];
 
-    for (let i = 1; i <= condtion; i++) {
-        children.push(Element('option', { options: { value: i, innerText: i } }));
+    for (let page = 1; i <= condtion; page++) {
+        children.push(
+            Element('option', {
+                options: {
+                    value: page,
+                    innerText: page,
+                    selected: currentPage === page,
+                },
+            })
+        );
     }
 
     return Element('select', {
         children,
-        options: { id: 'activePageSelect' },
+        options: {
+            id: 'activePageSelect',
+            onchange: (event) => {
+                searchCriteriaChangedEvent.detail.currentPage = event.target.value;
+                event.target.dispatchEvent(searchCriteriaChangedEvent);
+            },
+        },
     });
 };
