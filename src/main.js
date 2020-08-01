@@ -1,3 +1,9 @@
 import './styles/main.css';
 
-// Please use https://open-platform.theguardian.com/documentation/
+import { getNews } from './services';
+import { NewsList } from './components';
+
+window.onload = async () => {
+    const result = await getNews();
+    NewsList(result.results);
+};
