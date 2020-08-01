@@ -1,8 +1,19 @@
-import { Button, Link, Section } from '../common';
+import { Element } from '../common';
 
 export const NewsListItemAction = ({ id, url }) => {
-    return Section('newsActions', [
-        Link({ className: 'button', href: url, text: 'Full article' }),
-        Button({ className: 'button button-outline', text: 'Read Later ' }),
-    ]);
+    return Element('section', {
+        children: [
+            Element('a', {
+                options: { href: url, innerText: 'Full article', className: 'button' },
+            }),
+            Element('button', {
+                options: {
+                    id,
+                    className: 'button button-outline',
+                    innerText: 'Read Later ',
+                },
+            }),
+        ],
+        options: { className: 'newsActions' },
+    });
 };

@@ -1,4 +1,4 @@
-import { Article } from '../common';
+import { Element } from '../common';
 
 import { NewsListItemHeader } from './NewsListItemHeader';
 import { NewsListItemDetails } from './NewsListItemDetails';
@@ -11,15 +11,16 @@ export const NewsListItem = ({
     sectionName,
     publicationDate,
 }) => {
-    const newsItem = document.createElement('li');
-
-    newsItem.appendChild(
-        Article([
-            NewsListItemHeader(title),
-            NewsListItemDetails({ sectionName, publicationDate }),
-            NewsListItemAction({ id, url }),
-        ])
-    );
-
-    return newsItem;
+    return Element('li', {
+        children: [
+            Element('article', {
+                children: [
+                    NewsListItemHeader(title),
+                    NewsListItemDetails({ sectionName, publicationDate }),
+                    NewsListItemAction({ id, url }),
+                ],
+                options: { className: 'news' },
+            }),
+        ],
+    });
 };

@@ -5,5 +5,5 @@ import { NewsList } from './components';
 
 window.onload = async () => {
     const result = await getNews();
-    NewsList(result.results);
+    document.querySelector('.newsList').replaceWith(NewsList(result.results));
 };

@@ -1,12 +1,9 @@
+import { Element } from '../common';
 import { NewsListItem } from './NewsListItem';
 
 export const NewsList = (news) => {
-    const newsList = document.querySelector('.newsList');
-    newsList.innerHTML = '';
-
-    const newsListItems = news.map((item) => NewsListItem(item));
-
-    newsListItems.forEach((item) => {
-        newsList.appendChild(item);
+    return Element('ul', {
+        children: news.map((article) => NewsListItem(article)),
+        options: { className: 'newsList' },
     });
 };

@@ -1,20 +1,27 @@
-import { Section, Strong } from '../common';
+import { Element } from '../common';
 
 export const NewsListItemDetails = ({ sectionName, publicationDate }) => {
-    const ul = document.createElement('ul');
-
-    const sectionNameItem = document.createElement('li');
-    sectionNameItem
-        .appendChild(Strong('Section Name: '))
-        .appendChild(document.createTextNode(sectionName));
-
-    const sectionPublicationDateItem = document.createElement('li');
-    sectionPublicationDateItem
-        .appendChild(Strong('Publication Date: '))
-        .appendChild(document.createTextNode(publicationDate));
-
-    ul.appendChild(sectionNameItem);
-    ul.appendChild(sectionPublicationDateItem);
-
-    return Section('newsDetails', [ul]);
+    return Element('section', {
+        options: { className: 'newsDetails' },
+        children: [
+            Element('ul', {
+                children: [
+                    Element('li', {
+                        children: [
+                            Element('strong', { options: { innerText: 'Section Name: ' } }),
+                            document.createTextNode(sectionName),
+                        ],
+                    }),
+                    Element('li', {
+                        children: [
+                            Element('strong', {
+                                options: { innerText: 'Publication Date: ' },
+                            }),
+                            document.createTextNode(publicationDate),
+                        ],
+                    }),
+                ],
+            }),
+        ],
+    });
 };
