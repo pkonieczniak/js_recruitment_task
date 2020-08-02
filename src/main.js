@@ -10,10 +10,10 @@ import {
 
 window.onload = async () => {
     const result = await getNews();
-    document.querySelector('.newsList').replaceWith(NewsList(result.results));
+    document.querySelector('#newsListColumn').append(NewsList(result.results));
     document
-        .querySelector('#activePageSelect')
-        .replaceWith(ActivePageSelect(result.pages, result.currentPage));
+        .querySelector('#activePageSelectColumn')
+        .appendChild(ActivePageSelect(result.pages, result.currentPage));
 };
 
 const body = document.body;
