@@ -1,11 +1,12 @@
 import './styles/main.css';
 
-import { getNews } from './services';
+import { getNews, getBookmarkedNews } from './services';
 import {
     NewsList,
     ActivePageSelect,
     SectionSelect,
     SearchInput,
+    ReadLaterList,
 } from './components';
 
 window.onload = async () => {
@@ -14,6 +15,11 @@ window.onload = async () => {
     document
         .querySelector('#activePageSelectColumn')
         .appendChild(ActivePageSelect(result.pages, result.currentPage));
+
+    const bookmarkedNews = getBookmarkedNews();
+    document
+        .querySelector('#readLaterListColumn')
+        .appendChild(ReadLaterList(bookmarkedNews));
 };
 
 const body = document.body;

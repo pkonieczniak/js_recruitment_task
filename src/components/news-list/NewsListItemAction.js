@@ -1,6 +1,7 @@
 import { Element } from '../common';
+import { saveArticle } from '../../services';
 
-export const NewsListItemAction = ({ id, url }) => {
+export const NewsListItemAction = ({ id, title, url }) => {
     return Element('section', {
         children: [
             Element('a', {
@@ -11,6 +12,7 @@ export const NewsListItemAction = ({ id, url }) => {
                     id,
                     className: 'button button-outline',
                     innerText: 'Read Later ',
+                    onclick: () => saveArticle({ id, title, url }),
                 },
             }),
         ],

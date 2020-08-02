@@ -17,7 +17,7 @@ export const NewsListItem = ({
                 children: [
                     NewsListItemHeader(title),
                     NewsListItemDetails({ sectionName, publicationDate }),
-                    NewsListItemAction({ id, url }),
+                    NewsListItemAction({ id, url, title }),
                 ],
                 options: { className: 'news' },
             }),
