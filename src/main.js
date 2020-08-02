@@ -1,7 +1,12 @@
 import './styles/main.css';
 
 import { getNews } from './services';
-import { NewsList, ActivePageSelect, SectionSelect } from './components';
+import {
+    NewsList,
+    ActivePageSelect,
+    SectionSelect,
+    SearchInput,
+} from './components';
 
 window.onload = async () => {
     const result = await getNews();
@@ -21,3 +26,4 @@ body.addEventListener('searchCriteriaChanged', async (event) => {
 });
 
 document.querySelector('#sectionSelectColumn').appendChild(SectionSelect());
+document.querySelector('#searchColumn').appendChild(SearchInput());
