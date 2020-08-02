@@ -32,8 +32,8 @@ describe('getNews', () => {
         expect(searchParameters).toMatchInlineSnapshot(`
       Array [
         "page-size=10",
-        "fromDate=2020-06-25",
-        "toDate=2020-07-25",
+        "from-date=2020-06-25",
+        "to-date=2020-07-25",
         "page=1",
       ]
     `);
@@ -49,8 +49,8 @@ describe('getNews', () => {
         expect(searchParameters).toMatchInlineSnapshot(`
       Array [
         "page-size=10",
-        "fromDate=2020-06-25",
-        "toDate=2020-07-25",
+        "from-date=2020-06-25",
+        "to-date=2020-07-25",
         "page=3",
         "q=football",
         "section=books",
