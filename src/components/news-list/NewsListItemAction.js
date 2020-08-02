@@ -1,5 +1,5 @@
 import { Element } from '../common';
-import { saveArticle } from '../../services';
+import { saveArticleEvent } from '../../events';
 
 export const NewsListItemAction = ({ id, title, url }) => {
     return Element('section', {
@@ -12,7 +12,12 @@ export const NewsListItemAction = ({ id, title, url }) => {
                     id,
                     className: 'button button-outline',
                     innerText: 'Read Later ',
-                    onclick: () => saveArticle({ id, title, url }),
+                    onclick: (event) => {
+                        saveArticleEvent.detail.id = id;
+                        saveArticleEvent.detail.title = title;
+                        saveArticleEvent.detail.url = url;
+                        event.target.dispatchEvent(saveArticleEvent);
+                    },
                 },
             }),
         ],

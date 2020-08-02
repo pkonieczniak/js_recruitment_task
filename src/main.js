@@ -1,6 +1,6 @@
 import './styles/main.css';
 
-import { getNews, getBookmarkedNews } from './services';
+import { getNews, getBookmarkedNews, saveArticle } from './services';
 import {
     NewsList,
     ActivePageSelect,
@@ -29,6 +29,15 @@ body.addEventListener('searchCriteriaChanged', async (event) => {
     document
         .querySelector('#activePageSelect')
         .replaceWith(ActivePageSelect(result.pages, result.currentPage));
+});
+
+body.addEventListener('saveArticle', async (event) => {
+    saveArticle(event.detail);
+
+    const bookmarkedNews = getBookmarkedNews();
+    document
+        .querySelector('.readLaterList')
+        .replaceWith(ReadLaterList(bookmarkedNews));
 });
 
 document.querySelector('#sectionSelectColumn').appendChild(SectionSelect());
