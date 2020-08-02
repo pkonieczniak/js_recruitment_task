@@ -1,4 +1,5 @@
 import { Element } from '../common';
+import { deleteArticleEvent } from '../../events';
 
 export const ReadLaterListItem = ({ id, title, url }) => {
     return Element('li', {
@@ -20,24 +21,17 @@ export const ReadLaterListItem = ({ id, title, url }) => {
                         },
                     }),
                     Element('button', {
-                        options: { className: 'button button-clear', innerText: 'Remove' },
+                        options: {
+                            className: 'button button-clear',
+                            innerText: 'Remove',
+                            onclick: (event) => {
+                                deleteArticleEvent.detail.prefixedId = id;
+                                event.target.dispatchEvent(deleteArticleEvent);
+                            },
+                        },
                     }),
                 ],
             }),
         ],
     });
 };
-
-{
-    /* <ul class="readLaterList">
-  <li>
-    <h4 class="readLaterItem-title">Saved news title</h4>
-    <section>
-      <a href="https://theguardian.com" class="button button-clear">
-        Read
-      </a>
-      <button class="button button-clear">Remove</button>
-    </section>
-  </li>
-</ul>; */
-}

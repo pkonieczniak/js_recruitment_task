@@ -1,6 +1,12 @@
 import './styles/main.css';
 
-import { getNews, getBookmarkedNews, saveArticle } from './services';
+import {
+    getNews,
+    getBookmarkedNews,
+    saveArticle,
+    deleteArticle,
+} from './services';
+
 import {
     NewsList,
     ActivePageSelect,
@@ -33,7 +39,14 @@ body.addEventListener('searchCriteriaChanged', async (event) => {
 
 body.addEventListener('saveArticle', async (event) => {
     saveArticle(event.detail);
+    const bookmarkedNews = getBookmarkedNews();
+    document
+        .querySelector('.readLaterList')
+        .replaceWith(ReadLaterList(bookmarkedNews));
+});
 
+body.addEventListener('deleteArticle', async (event) => {
+    deleteArticle(event.detail);
     const bookmarkedNews = getBookmarkedNews();
     document
         .querySelector('.readLaterList')
