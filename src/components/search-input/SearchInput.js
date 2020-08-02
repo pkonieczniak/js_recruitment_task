@@ -4,6 +4,7 @@ import { searchCriteriaChangedEvent } from '../../events';
 
 export const SearchInput = () => {
     const onKeyDown = debounce((event) => {
+        searchCriteriaChangedEvent.detail.currentPage = 1;
         searchCriteriaChangedEvent.detail.phrase = event.target.value;
         event.target.dispatchEvent(searchCriteriaChangedEvent);
     }, 650);

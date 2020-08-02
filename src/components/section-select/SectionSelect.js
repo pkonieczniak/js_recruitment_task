@@ -17,6 +17,7 @@ export const SectionSelect = () => {
             id: 'sectionSelect',
             onchange: (event) => {
                 const value = event.target.value === 'all' ? '' : event.target.value;
+                searchCriteriaChangedEvent.detail.currentPage = 1;
                 searchCriteriaChangedEvent.detail.section = value;
                 event.target.dispatchEvent(searchCriteriaChangedEvent);
             },
