@@ -5,7 +5,12 @@ export const NewsListItemAction = ({ id, title, url }) => {
     return Element('section', {
         children: [
             Element('a', {
-                options: { href: url, innerText: 'Full article', className: 'button' },
+                options: {
+                    href: url,
+                    innerText: 'Full article',
+                    className: 'button',
+                    target: '_blank',
+                },
             }),
             Element('button', {
                 options: {
