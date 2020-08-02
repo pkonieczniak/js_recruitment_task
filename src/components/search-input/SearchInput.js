@@ -6,7 +6,7 @@ export const SearchInput = () => {
     const onKeyDown = debounce((event) => {
         searchCriteriaChangedEvent.detail.phrase = event.target.value;
         event.target.dispatchEvent(searchCriteriaChangedEvent);
-    }, 1000);
+    }, 650);
 
     return Element('input', {
         options: {
