@@ -1,7 +1,15 @@
 import './styles/main.css';
 
 import { getNews } from './services';
-import { NewsList, ActivePageSelect } from './components';
+import { NewsList, ActivePageSelect, SectionSelect } from './components';
+
+window.onload = async () => {
+    const result = await getNews();
+    document.querySelector('.newsList').replaceWith(NewsList(result.results));
+    document
+        .querySelector('#activePageSelect')
+        .replaceWith(ActivePageSelect(result.pages, result.currentPage));
+};
 
 const body = document.body;
 body.addEventListener('searchCriteriaChanged', async (event) => {
@@ -12,10 +20,4 @@ body.addEventListener('searchCriteriaChanged', async (event) => {
         .replaceWith(ActivePageSelect(result.pages, result.currentPage));
 });
 
-window.onload = async () => {
-    const result = await getNews();
-    document.querySelector('.newsList').replaceWith(NewsList(result.results));
-    document
-        .querySelector('#activePageSelect')
-        .replaceWith(ActivePageSelect(result.pages, result.currentPage));
-};
+document.querySelector('#sectionSelectColumn').appendChild(SectionSelect());

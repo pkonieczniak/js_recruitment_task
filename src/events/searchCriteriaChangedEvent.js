@@ -1,14 +1,10 @@
-const searchCriteriaChangedEvent = new CustomEvent(
-    'searchCriteriaChanged',
-    {
-        bubbles: true,
-        detail: {
-            currentPage: null,
-            phrase: null,
-            section: null,
-        },
+const searchCriteriaChangedEvent = new CustomEvent('searchCriteriaChanged', {
+    bubbles: true,
+    detail: {
+        currentPage: 1,
+        phrase: '',
+        section: '',
     },
-    false
-);
+});
 
 export default searchCriteriaChangedEvent;

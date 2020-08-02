@@ -6,7 +6,7 @@ export const ActivePageSelect = (pages, currentPage) => {
     const condtion = pages > MAX_PAGES ? MAX_PAGES : pages;
     const children = [];
 
-    for (let page = 1; i <= condtion; page++) {
+    for (let page = 1; page <= condtion; page++) {
         children.push(
             Element('option', {
                 options: {
