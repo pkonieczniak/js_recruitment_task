@@ -35,6 +35,7 @@ describe('getNews', () => {
         "from-date=2020-06-25",
         "to-date=2020-07-25",
         "page=1",
+        "order-by=newest",
       ]
     `);
     });
@@ -52,6 +53,7 @@ describe('getNews', () => {
         "from-date=2020-06-25",
         "to-date=2020-07-25",
         "page=3",
+        "order-by=newest",
         "q=football",
         "section=books",
       ]
