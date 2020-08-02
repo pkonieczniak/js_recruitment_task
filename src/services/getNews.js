@@ -1,4 +1,4 @@
-import { getDateRange } from '../utils';
+import { getDateRange, format } from '../utils';
 
 export const getNews = async (searchCriteria = {}) => {
     const url = buildUrl(searchCriteria);
@@ -43,7 +43,7 @@ const transformResults = (results) => {
             id,
             sectionName,
             title: webTitle,
-            publicationDate: webPublicationDate,
+            publicationDate: format(webPublicationDate),
             url: webUrl,
         })
     );
